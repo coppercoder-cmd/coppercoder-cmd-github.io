@@ -5,429 +5,281 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TaridSoftware</title>
 <style>
-    /* Brand Colors */
-    :root {
-        --primary-red: #E10600;
-        --secondary-white: #FFFFFF;
-        --accent-black: #000000;
-    }
+:root {
+    --primary-red: #E10600;
+    --secondary-white: #FFFFFF;
+    --accent-black: #000000;
+}
 
-    /* Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    body {
-        background-color: var(--secondary-white);
-        color: var(--accent-black);
-        line-height: 1.6;
-    }
+body {
+    background-color: var(--secondary-white);
+    color: var(--accent-black);
+    line-height: 1.6;
+}
 
-    /* Navbar */
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-red);
+    color: var(--secondary-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    height: 50px; /* compact height */
+}
+
+nav .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    color: var(--secondary-white);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+nav ul li a:hover {
+    color: var(--accent-black);
+}
+
+/* Spacer so content is below navbar */
+.spacer {
+    height: 50px;
+}
+
+/* Hero Section */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-red);
+    color: var(--secondary-white);
+    text-align: center;
+    padding: 3rem 1rem; /* remove 100vh, use padding instead */
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+}
+
+header p {
+    font-size: 1rem;
+    max-width: 90%;
+}
+
+header .cta {
+    margin-top: 1.5rem;
+}
+
+header .cta a {
+    background-color: var(--secondary-white);
+    color: var(--primary-red);
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header .cta a:hover {
+    background-color: var(--accent-black);
+    color: var(--secondary-white);
+}
+
+/* Sections */
+section {
+    padding: 4rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-red);
+    text-align: center;
+}
+
+section p {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Features Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    padding-top: 1rem;
+}
+
+.feature-card {
+    background-color: var(--secondary-white);
+    border: 1px solid var(--accent-black);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.feature-card h3 {
+    margin-bottom: 0.8rem;
+    color: var(--primary-red);
+    font-size: 1.1rem;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--accent-black);
+    color: var(--secondary-white);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 480px) {
     nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary-red);
-        color: var(--secondary-white);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.6rem 1rem;
-        z-index: 1000;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        flex-direction: row;
+        padding: 0.4rem 1rem;
+        height: 45px; /* even smaller */
     }
 
     nav .logo {
-        font-weight: bold;
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 
     nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
+        flex-direction: row;
+        gap: 0.4rem;
+        overflow-x: auto;
     }
 
     nav ul li a {
-        color: var(--secondary-white);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
-
-    nav ul li a:hover {
-        color: var(--accent-black);
-    }
-
-    /* Hero Section */
-    header {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: var(--primary-red);
-        color: var(--secondary-white);
-        text-align: center;
-        padding: 0 1rem;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+        white-space: nowrap;
     }
 
     header h1 {
-        font-size: 2.2rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.8rem;
     }
 
     header p {
-        font-size: 1rem;
-        max-width: 90%;
-    }
-
-    header .cta {
-        margin-top: 1.5rem;
-    }
-
-    header .cta a {
-        background-color: var(--secondary-white);
-        color: var(--primary-red);
-        padding: 0.6rem 1.2rem;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    header .cta a:hover {
-        background-color: var(--accent-black);
-        color: var(--secondary-white);
-    }
-
-    /* Sections */
-    section {
-        padding: 4rem 1rem;
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    section h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        color: var(--primary-red);
-        text-align: center;
-    }
-
-    section p {
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    /* Features Grid */
-    .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.5rem;
-        padding-top: 1rem;
-    }
-
-    .feature-card {
-        background-color: var(--secondary-white);
-        border: 1px solid var(--accent-black);
-        border-radius: 8px;
-        padding: 1rem;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    }
-
-    .feature-card h3 {
-        margin-bottom: 0.8rem;
-        color: var(--primary-red);
-        font-size: 1.1rem;
-    }
-
-    .feature-card p {
         font-size: 0.95rem;
     }
 
-    /* Footer */
-    footer {
-        background-color: var(--accent-black);
-        color: var(--secondary-white);
-        text-align: center;
-        padding: 1.5rem 1rem;
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
         font-size: 0.9rem;
     }
-
-    /* Scroll spacing for fixed navbar */
-    .spacer {
-        height: 50px; /* matches navbar height */
-    }
-
-    /* Smooth Scroll */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Mobile responsive tweaks */
-    @media (max-width: 480px) {
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary-red);
-            color: var(--secondary-white);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1rem;
-            z-index: 1000;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        nav .logo {
-            font-weight: bold;
-            font-size: 1.3rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-        }
-
-        nav ul li a {
-            color: var(--secondary-white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-black);
-        }
-
-        /* Hero Section */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: var(--primary-red);
-            color: var(--secondary-white);
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        header p {
-            font-size: 1rem;
-            max-width: 90%;
-        }
-
-        header .cta {
-            margin-top: 1.5rem;
-        }
-
-        header .cta a {
-            background-color: var(--secondary-white);
-            color: var(--primary-red);
-            padding: 0.6rem 1.2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        header .cta a:hover {
-            background-color: var(--accent-black);
-            color: var(--secondary-white);
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 1rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary-red);
-            text-align: center;
-        }
-
-        section p {
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        /* Features Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            padding-top: 1rem;
-        }
-
-        .feature-card {
-            background-color: var(--secondary-white);
-            border: 1px solid var(--accent-black);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-
-        .feature-card h3 {
-            margin-bottom: 0.8rem;
-            color: var(--primary-red);
-            font-size: 1.1rem;
-        }
-
-        .feature-card p {
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--accent-black);
-            color: var(--secondary-white);
-            text-align: center;
-            padding: 1.5rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* Scroll spacing for fixed navbar */
-        .spacer {
-            height: 60px;
-        }
-
-        .feature-card p {
-            font-size: 0.9rem;
-        }
-
-        /* Responsive tweaks for phones */
-        @media (max-width: 480px) {
-            nav {
-                flex-direction: column;
-                padding: 0.5rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                margin-top: 0.5rem;
-            }
-
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            header p {
-                font-size: 0.95rem;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-            }
-
-            .feature-card h3 {
-                font-size: 1rem;
-            }
-
-            .feature-card p {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+}
+</style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">Tarid</div>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="logo">Tarid</div>
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-    <div class="spacer"></div>
+<div class="spacer"></div>
 
-    <!-- Hero Section -->
-    <header id="hero">
-        <h1>TaridSoftware</h1>
-        <p>Helping SMBs streamline business management, user tracking, and task management through smart, integrated solutions.</p>
-        <div class="cta">
-            <a href="#contact">Get Started</a>
+<header id="hero">
+    <h1>TaridSoftware</h1>
+    <p>Helping SMBs streamline business management, user tracking, and task management through smart, integrated solutions.</p>
+    <div class="cta">
+        <a href="#contact">Get Started</a>
+    </div>
+</header>
+
+<section id="features">
+    <h2>Our Solutions</h2>
+    <div class="features">
+        <div class="feature-card">
+            <h3>User Management</h3>
+            <p>Track and manage all users effortlessly with centralized dashboards.</p>
         </div>
-    </header>
-
-    <!-- Features Section -->
-    <section id="features">
-        <h2>Our Solutions</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>User Management</h3>
-                <p>Track and manage all users effortlessly with centralized dashboards.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Task Tracking</h3>
-                <p>Stay on top of projects and tasks with clear priorities and deadlines.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Business Analytics</h3>
-                <p>Make data-driven decisions with insightful reports and analytics tools.</p>
-            </div>
-            <div class="feature-card">
-                <h3>SMB Focused</h3>
-                <p>Solutions designed specifically for small and medium-sized businesses.</p>
-            </div>
+        <div class="feature-card">
+            <h3>Task Tracking</h3>
+            <p>Stay on top of projects and tasks with clear priorities and deadlines.</p>
         </div>
-    </section>
+        <div class="feature-card">
+            <h3>Business Analytics</h3>
+            <p>Make data-driven decisions with insightful reports and analytics tools.</p>
+        </div>
+        <div class="feature-card">
+            <h3>SMB Focused</h3>
+            <p>Solutions designed specifically for small and medium-sized businesses.</p>
+        </div>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About TaridSoftware</h2>
-        <p>TaridSoftware is dedicated to empowering small and medium businesses by delivering powerful business management tools. Our solutions simplify daily operations, streamline task management, and enhance user tracking for better productivity.</p>
-    </section>
+<section id="about">
+    <h2>About TaridSoftware</h2>
+    <p>TaridSoftware is dedicated to empowering small and medium businesses by delivering powerful business management tools. Our solutions simplify daily operations, streamline task management, and enhance user tracking for better productivity.</p>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:info@taridsoftware.com">info@taridsoftware.com</a></p>
-        <p>Phone: +44 123 456 7890</p>
-        <p>Address: 123 Tarid Street, London, UK</p>
-    </section>
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:info@taridsoftware.com">info@taridsoftware.com</a></p>
+    <p>Phone: +44 123 456 7890</p>
+    <p>Address: 123 Tarid Street, London, UK</p>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2026 TaridSoftware. All rights reserved.
-    </footer>
+<footer>
+    &copy; 2026 TaridSoftware. All rights reserved.
+</footer>
 
 </body>
 </html>
- 
-
