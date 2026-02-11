@@ -1,84 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>TaridSoftware</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TaridSoftware — Modern tools for modern teams." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaridSoftware</title>
+    <style>
+        /* Brand Colors */
+        :root {
+            --primary-red: #E10600;
+            --secondary-white: #FFFFFF;
+            --accent-black: #000000;
+        }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0d0f17;
-      color: #f3f4f6;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
+        body {
+            background-color: var(--secondary-white);
+            color: var(--accent-black);
+            line-height: 1.6;
+        }
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      text-align: center;
-    }
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-red);
+            color: var(--secondary-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
 
-    header {
-      margin-bottom: 3rem;
-    }
+        nav .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #8b5cf6;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
+        nav ul li a {
+            color: var(--secondary-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-    p {
-      font-size: 1.2rem;
-      opacity: 0.85;
-      margin-bottom: 2.5rem;
-    }
+        nav ul li a:hover {
+            color: var(--accent-black);
+        }
 
-    .cta {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      background: #8b5cf6;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s;
-    }
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--primary-red);
+            color: var(--secondary-white);
+            text-align: center;
+            padding: 0 2rem;
+        }
 
-    .cta:hover {
-      background: #7c3aed;
-    }
-  </style>
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            max-width: 600px;
+        }
+
+        header .cta {
+            margin-top: 2rem;
+        }
+
+        header .cta a {
+            background-color: var(--secondary-white);
+            color: var(--primary-red);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header .cta a:hover {
+            background-color: var(--accent-black);
+            color: var(--secondary-white);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        section p {
+            margin-bottom: 1rem;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--secondary-white);
+            border: 1px solid var(--accent-black);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-black);
+            color: var(--secondary-white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Scroll spacing for fixed navbar */
+        .spacer {
+            height: 70px;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">TaridSoftware</div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Tarid</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="spacer"></div>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <h1>TaridSoftware</h1>
+        <p>Helping SMBs streamline business management, user tracking, and task management through smart, integrated solutions.</p>
+        <div class="cta">
+            <a href="#contact">Get Started</a>
+        </div>
     </header>
 
-    <h1>Build Faster. Collaborate Smarter.</h1>
-    <p>
-      TaridSoftware creates modern, lightweight tools designed for teams who want clarity,
-      speed, and focus — without the noise.
-    </p>
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Our Solutions</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>User Management</h3>
+                <p>Track and manage all users effortlessly with centralized dashboards.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Task Tracking</h3>
+                <p>Stay on top of projects and tasks with clear priorities and deadlines.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Business Analytics</h3>
+                <p>Make data-driven decisions with insightful reports and analytics tools.</p>
+            </div>
+            <div class="feature-card">
+                <h3>SMB Focused</h3>
+                <p>Solutions designed specifically for small and medium-sized businesses.</p>
+            </div>
+        </div>
+    </section>
 
-    <a href="#" class="cta">Get Started</a>
-  </div>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About TaridSoftware</h2>
+        <p>TaridSoftware is dedicated to empowering small and medium businesses by delivering powerful business management tools. Our solutions simplify daily operations, streamline task management, and enhance user tracking for better productivity.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:info@taridsoftware.com">info@taridsoftware.com</a></p>
+        <p>Phone: +44 123 456 7890</p>
+        <p>Address: 123 Tarid Street, London, UK</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 TaridSoftware. All rights reserved.
+    </footer>
+
 </body>
 </html>
+
