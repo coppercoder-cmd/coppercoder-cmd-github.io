@@ -3,12 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TaridSoftware</title>
+<title>Tarid – Identity & Onboarding for SMBs</title>
+
 <style>
+/* Brand Colours */
 :root {
-    --primary-red: #E10600;
-    --secondary-white: #FFFFFF;
-    --accent-black: #000000;
+    --primary: #0EA5E9;
+    --secondary: #1E293B;
+    --accent-neutral: #64748B;
+    --accent-success: #10B981;
+    --accent-light: #F1F5F9;
+
+    --extra-blue: #0162B7;
+    --extra-azure: #2563EB;
+    --extra-amber: #F59E0B;
+    --extra-red: #EF4444;
+
+    --white: #FFFFFF;
+    --black: #000000;
 }
 
 /* Reset */
@@ -16,12 +28,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background-color: var(--secondary-white);
-    color: var(--accent-black);
+    background-color: var(--accent-light);
+    color: var(--secondary);
     line-height: 1.6;
 }
 
@@ -31,83 +43,80 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--primary-red);
-    color: var(--secondary-white);
+    background-color: var(--white);
+    border-bottom: 1px solid #e5e7eb;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
     z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    height: 50px; /* compact height */
 }
 
 nav .logo {
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--primary);
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 nav ul li a {
-    color: var(--secondary-white);
+    color: var(--secondary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.9rem;
 }
 
 nav ul li a:hover {
-    color: var(--accent-black);
+    color: var(--primary);
 }
 
-/* Spacer so content is below navbar */
+/* Spacer */
 .spacer {
-    height: 50px;
+    height: 70px;
 }
 
-/* Hero Section */
+/* Hero */
 header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--primary-red);
-    color: var(--secondary-white);
     text-align: center;
-    padding: 3rem 1rem; /* remove 100vh, use padding instead */
+    padding: 5rem 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--extra-blue));
+    color: var(--white);
 }
 
 header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 header p {
-    font-size: 1rem;
-    max-width: 90%;
+    font-size: 1.2rem;
+    max-width: 650px;
+    margin: 0 auto;
+    opacity: 0.95;
 }
 
 header .cta {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 header .cta a {
-    background-color: var(--secondary-white);
-    color: var(--primary-red);
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--primary);
+    padding: 0.8rem 1.6rem;
+    border-radius: 6px;
     text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
 header .cta a:hover {
-    background-color: var(--accent-black);
-    color: var(--secondary-white);
+    background-color: var(--secondary);
+    color: var(--white);
 }
 
 /* Sections */
@@ -118,109 +127,51 @@ section {
 }
 
 section h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-red);
-    text-align: center;
-}
-
-section p {
-    margin-bottom: 1rem;
+    color: var(--secondary);
     text-align: center;
 }
 
 /* Features Grid */
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
     padding-top: 1rem;
 }
 
 .feature-card {
-    background-color: var(--secondary-white);
-    border: 1px solid var(--accent-black);
-    border-radius: 8px;
-    padding: 1rem;
+    background-color: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1.5rem;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
 }
 
 .feature-card h3 {
     margin-bottom: 0.8rem;
-    color: var(--primary-red);
-    font-size: 1.1rem;
-}
-
-.feature-card p {
-    font-size: 0.95rem;
+    color: var(--primary);
+    font-size: 1.2rem;
 }
 
 /* Footer */
 footer {
-    background-color: var(--accent-black);
-    color: var(--secondary-white);
+    background-color: var(--secondary);
+    color: var(--white);
     text-align: center;
-    padding: 1.5rem 1rem;
-    font-size: 0.9rem;
-}
-
-/* Smooth Scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Mobile responsive tweaks */
-@media (max-width: 480px) {
-    nav {
-        flex-direction: row;
-        padding: 0.4rem 1rem;
-        height: 45px; /* even smaller */
-    }
-
-    nav .logo {
-        font-size: 1rem;
-    }
-
-    nav ul {
-        flex-direction: row;
-        gap: 0.4rem;
-        overflow-x: auto;
-    }
-
-    nav ul li a {
-        font-size: 0.8rem;
-        padding: 0.2rem 0.4rem;
-        white-space: nowrap;
-    }
-
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    header p {
-        font-size: 0.95rem;
-    }
-
-    section h2 {
-        font-size: 1.5rem;
-    }
-
-    .feature-card h3 {
-        font-size: 1rem;
-    }
-
-    .feature-card p {
-        font-size: 0.9rem;
-    }
+    padding: 2rem 1rem;
+    margin-top: 3rem;
 }
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -236,49 +187,47 @@ html {
 <div class="spacer"></div>
 
 <header id="hero">
-    <h1>TaridSoftware</h1>
-    <p>Helping SMBs streamline business management, user tracking, and task management through smart, integrated solutions.</p>
+    <h1>Identity & Onboarding for SMBs</h1>
+    <p>Tarid unifies authentication, onboarding, billing, and user flows into one seamless platform built for small and medium businesses.</p>
     <div class="cta">
         <a href="#contact">Get Started</a>
     </div>
 </header>
 
 <section id="features">
-    <h2>Our Solutions</h2>
+    <h2>What Tarid Delivers</h2>
     <div class="features">
         <div class="feature-card">
-            <h3>User Management</h3>
-            <p>Track and manage all users effortlessly with centralized dashboards.</p>
+            <h3>Easy Authentication</h3>
+            <p>Simple, secure identity for your users — without enterprise complexity.</p>
         </div>
         <div class="feature-card">
-            <h3>Task Tracking</h3>
-            <p>Stay on top of projects and tasks with clear priorities and deadlines.</p>
+            <h3>Onboarding Flows</h3>
+            <p>Guide users through setup, billing, and activation with zero friction.</p>
         </div>
         <div class="feature-card">
-            <h3>Business Analytics</h3>
-            <p>Make data-driven decisions with insightful reports and analytics tools.</p>
+            <h3>Subscription‑Aware Identity</h3>
+            <p>Billing and access control stay perfectly in sync.</p>
         </div>
         <div class="feature-card">
-            <h3>SMB Focused</h3>
-            <p>Solutions designed specifically for small and medium-sized businesses.</p>
+            <h3>SMB‑Focused</h3>
+            <p>Designed for small teams that need power without overhead.</p>
         </div>
     </div>
 </section>
 
 <section id="about">
-    <h2>About TaridSoftware</h2>
-    <p>TaridSoftware is dedicated to empowering small and medium businesses by delivering powerful business management tools. Our solutions simplify daily operations, streamline task management, and enhance user tracking for better productivity.</p>
+    <h2>About Tarid</h2>
+    <p>Tarid is built for SMBs that need identity, onboarding, and billing to “just work.” No enterprise bloat. No complexity. Just clean, modern flows that help your users get started fast.</p>
 </section>
 
 <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:info@taridsoftware.com">info@taridsoftware.com</a></p>
-    <p>Phone: +44 123 456 7890</p>
-    <p>Address: 123 Tarid Street, London, UK</p>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:info@tarid.uk">info@tarid.uk</a></p>
 </section>
 
 <footer>
-    &copy; 2026 TaridSoftware. All rights reserved.
+    &copy; 2026 Tarid. All rights reserved.
 </footer>
 
 </body>
