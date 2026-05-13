@@ -3,24 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarid – Identity & Onboarding for SMBs</title>
+<title>Tarid – Identity & Onboarding for Modern SMBs</title>
 
 <style>
-/* Brand Colours */
 :root {
-    --primary: #0EA5E9;
+    --primary: #0162B7;
     --secondary: #1E293B;
-    --accent-neutral: #64748B;
-    --accent-success: #10B981;
-    --accent-light: #F1F5F9;
-
-    --extra-blue: #0162B7;
-    --extra-azure: #2563EB;
-    --extra-amber: #F59E0B;
-    --extra-red: #EF4444;
-
+    --neutral-900: #0F172A;
+    --neutral-700: #334155;
+    --neutral-500: #64748B;
+    --neutral-300: #CBD5E1;
+    --neutral-100: #F1F5F9;
     --white: #FFFFFF;
-    --black: #000000;
 }
 
 /* Reset */
@@ -28,12 +22,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
-    background-color: var(--accent-light);
-    color: var(--secondary);
+    background-color: var(--neutral-100);
+    color: var(--neutral-900);
     line-height: 1.6;
 }
 
@@ -41,14 +35,13 @@ body {
 nav {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     background-color: var(--white);
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--neutral-300);
+    padding: 0.9rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1.5rem;
     z-index: 1000;
 }
 
@@ -56,178 +49,346 @@ nav .logo {
     font-weight: 700;
     font-size: 1.3rem;
     color: var(--primary);
+    letter-spacing: 0.03em;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1.2rem;
+    gap: 1.8rem;
 }
 
 nav ul li a {
-    color: var(--secondary);
     text-decoration: none;
+    color: var(--neutral-700);
     font-weight: 500;
+    font-size: 0.95rem;
 }
 
 nav ul li a:hover {
     color: var(--primary);
 }
 
-/* Spacer */
+/* Spacer under fixed nav */
 .spacer {
-    height: 70px;
+    height: 64px;
 }
 
 /* Hero */
-header {
-    text-align: center;
-    padding: 5rem 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--extra-blue));
-    color: var(--white);
+.hero {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--neutral-300);
 }
 
-header h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
+.hero-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-kicker {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--neutral-500);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--secondary);
     margin-bottom: 1rem;
 }
 
-header p {
-    font-size: 1.2rem;
-    max-width: 650px;
-    margin: 0 auto;
-    opacity: 0.95;
+.hero p {
+    font-size: 1.05rem;
+    color: var(--neutral-700);
+    max-width: 32rem;
+    margin-bottom: 1.8rem;
 }
 
-header .cta {
-    margin-top: 2rem;
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 
-header .cta a {
-    background-color: var(--white);
-    color: var(--primary);
+.hero-cta a.primary-btn {
+    background-color: var(--primary);
+    color: var(--white);
     padding: 0.8rem 1.6rem;
-    border-radius: 6px;
+    border-radius: 4px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s ease;
+    font-size: 0.95rem;
 }
 
-header .cta a:hover {
-    background-color: var(--secondary);
-    color: var(--white);
+.hero-cta a.primary-btn:hover {
+    background-color: #004a8a;
 }
 
-/* Sections */
+.hero-cta a.secondary-btn {
+    border: 1px solid var(--neutral-300);
+    color: var(--neutral-700);
+    padding: 0.8rem 1.4rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    background-color: var(--white);
+}
+
+.hero-cta a.secondary-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Hero side panel */
+.hero-panel {
+    background-color: var(--neutral-100);
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    padding: 1.5rem;
+}
+
+.hero-panel-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--neutral-700);
+    margin-bottom: 0.75rem;
+}
+
+.hero-metric {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--neutral-700);
+}
+
+.hero-metric span.value {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Section wrapper */
 section {
-    padding: 4rem 1rem;
-    max-width: 900px;
+    max-width: 1120px;
     margin: 0 auto;
+    padding: 3.5rem 1.5rem;
 }
 
+/* Section headings */
 section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.9rem;
+    font-weight: 700;
     color: var(--secondary);
-    text-align: center;
+    margin-bottom: 0.5rem;
 }
 
-/* Features Grid */
-.features {
+section .section-subtitle {
+    font-size: 0.98rem;
+    color: var(--neutral-500);
+    margin-bottom: 2rem;
+}
+
+/* Features grid */
+.features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    padding-top: 1rem;
+    gap: 1.8rem;
 }
 
 .feature-card {
     background-color: var(--white);
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: 0.3s ease;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    padding: 1.4rem;
 }
 
-.feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+.feature-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.4rem;
 }
 
-.feature-card h3 {
-    margin-bottom: 0.8rem;
-    color: var(--primary);
-    font-size: 1.2rem;
+.feature-body {
+    font-size: 0.95rem;
+    color: var(--neutral-700);
+}
+
+/* How it works */
+.hiw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1rem;
+}
+
+.hiw-step {
+    background-color: var(--white);
+    border-radius: 6px;
+    border: 1px solid var(--neutral-300);
+    padding: 1.4rem;
+}
+
+.hiw-step-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--neutral-500);
+    margin-bottom: 0.4rem;
+}
+
+.hiw-step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.4rem;
+}
+
+.hiw-step-body {
+    font-size: 0.95rem;
+    color: var(--neutral-700);
 }
 
 /* Footer */
 footer {
-    background-color: var(--secondary);
-    color: var(--white);
+    border-top: 1px solid var(--neutral-300);
+    background-color: var(--white);
+    padding: 1.5rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--neutral-500);
     text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 3.5rem;
+    }
+
+    nav {
+        padding: 0.8rem 1.2rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.1rem;
+    }
 }
 </style>
 </head>
-
 <body>
 
 <nav>
     <div class="logo">Tarid</div>
     <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#features">Product</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <div class="spacer"></div>
 
-<header id="hero">
-    <h1>Identity & Onboarding for SMBs</h1>
-    <p>Tarid unifies authentication, onboarding, billing, and user flows into one seamless platform built for small and medium businesses.</p>
-    <div class="cta">
-        <a href="#contact">Get Started</a>
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div>
+            <div class="hero-kicker">Identity for modern SMBs</div>
+            <h1>Enterprise‑grade identity, without enterprise‑grade overhead.</h1>
+            <p>Tarid gives small and medium businesses a clean, reliable identity layer — authentication, onboarding, and access control that just works.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="primary-btn">Talk to us</a>
+                <a href="#features" class="secondary-btn">View product capabilities</a>
+            </div>
+        </div>
+        <aside class="hero-panel">
+            <div class="hero-panel-title">At a glance</div>
+            <div class="hero-metric">
+                <span>Onboarding time</span>
+                <span class="value">↓ 60%</span>
+            </div>
+            <div class="hero-metric">
+                <span>Access issues</span>
+                <span class="value">↓ 40%</span>
+            </div>
+            <div class="hero-metric">
+                <span>SMB‑ready</span>
+                <span class="value">Yes</span>
+            </div>
+        </aside>
     </div>
-</header>
+</section>
 
 <section id="features">
-    <h2>What Tarid Delivers</h2>
-    <div class="features">
+    <h2>Built for real‑world SMB identity</h2>
+    <p class="section-subtitle">Everything you need to manage users, access, and onboarding — without building it all yourself.</p>
+
+    <div class="features-grid">
         <div class="feature-card">
-            <h3>Easy Authentication</h3>
-            <p>Simple, secure identity for your users — without enterprise complexity.</p>
+            <div class="feature-title">Authentication that stays out of the way</div>
+            <div class="feature-body">Modern, secure sign‑in flows that feel familiar to users and don’t require a security team to maintain.</div>
         </div>
         <div class="feature-card">
-            <h3>Onboarding Flows</h3>
-            <p>Guide users through setup, billing, and activation with zero friction.</p>
+            <div class="feature-title">Onboarding flows that actually complete</div>
+            <div class="feature-body">Guide users from invite to active account with structured steps, clear states, and no duct‑taped logic.</div>
         </div>
         <div class="feature-card">
-            <h3>Subscription‑Aware Identity</h3>
-            <p>Billing and access control stay perfectly in sync.</p>
+            <div class="feature-title">Access control aligned with your business</div>
+            <div class="feature-body">Roles, permissions, and access rules that map to how your teams actually work — not how a legacy IAM thinks they should.</div>
         </div>
         <div class="feature-card">
-            <h3>SMB‑Focused</h3>
-            <p>Designed for small teams that need power without overhead.</p>
+            <div class="feature-title">SMB‑first by design</div>
+            <div class="feature-body">No SSO committee, no six‑month rollout. Tarid is built for lean teams that still need serious identity.</div>
         </div>
     </div>
 </section>
 
-<section id="about">
-    <h2>About Tarid</h2>
-    <p>Tarid is built for SMBs that need identity, onboarding, and billing to “just work.” No enterprise bloat. No complexity. Just clean, modern flows that help your users get started fast.</p>
+<section id="how-it-works">
+    <h2>How Tarid fits into your stack</h2>
+    <p class="section-subtitle">Drop Tarid in as your identity layer and keep your product team focused on what makes you different.</p>
+
+    <div class="hiw-grid">
+        <div class="hiw-step">
+            <div class="hiw-step-label">Step 1</div>
+            <div class="hiw-step-title">Connect your app</div>
+            <div class="hiw-step-body">Integrate Tarid with your existing application using modern APIs and clear, documented flows.</div>
+        </div>
+        <div class="hiw-step">
+            <div class="hiw-step-label">Step 2</div>
+            <div class="hiw-step-title">Define users and access</div>
+            <div class="hiw-step-body">Set up roles, groups, and access rules that reflect how your organisation actually operates.</div>
+        </div>
+        <div class="hiw-step">
+            <div class="hiw-step-label">Step 3</div>
+            <div class="hiw-step-title">Run onboarding through Tarid</div>
+            <div class="hiw-step-body">Use Tarid’s flows to invite, onboard, and manage users — with clear visibility into every step.</div>
+        </div>
+    </div>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:info@tarid.uk">info@tarid.uk</a></p>
+    <h2>Talk to Tarid</h2>
+    <p class="section-subtitle">Exploring identity options for your SMB? Share a bit about your stack and we’ll follow up.</p>
+    <p style="font-size:0.98rem;color:var(--neutral-700);margin-bottom:0.4rem;">Email: <a href="mailto:info@tarid.uk" style="color:var(--primary);text-decoration:none;">info@tarid.uk</a></p>
 </section>
 
 <footer>
-    &copy; 2026 Tarid. All rights reserved.
+    &copy; 2026 Tarid. Identity for modern SMBs.
 </footer>
 
 </body>
